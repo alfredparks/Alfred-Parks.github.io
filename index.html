@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Alfred Parks · IT Educator & Information Systems Professional</title>
+    <!-- Google Fonts + modern reset -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            color: #0a0f1c;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e4a76;
+            border-radius: 12px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* navbar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(30, 74, 118, 0.15);
+            z-index: 100;
+            padding: 0.8rem 0;
+        }
+        .nav-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-weight: 800;
+            font-size: 1.7rem;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #0f2b3d, #1e4a76);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .logo span {
+            background: linear-gradient(135deg, #1e4a76, #3b82f6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        
+        /* Main Navigation Links */
+        .nav-links {
+            display: flex;
+            gap: 1.4rem;
+            list-style: none;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #1e293b;
+            transition: 0.2s;
+            font-size: 0.9rem;
+            padding: 0.4rem 0;
+            white-space: nowrap;
+        }
+        .nav-links a:hover {
+            color: #1e4a76;
+        }
+        .nav-links .tab-nav-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .nav-links .tab-nav-item i {
+            font-size: 0.8rem;
+            color: #1e4a76;
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: #0f172a;
+        }
+
+        /* hero */
+        .hero {
+            padding: 3rem 0 2rem 0;
+            background: linear-gradient(120deg, #f1f5f9 0%, #ffffff 100%);
+        }
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+            justify-content: space-between;
+        }
+        .hero-content {
+            flex: 1;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: #e0f2fe;
+            color: #0369a1;
+            font-weight: 600;
+            font-size: 0.8rem;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            margin-bottom: 1rem;
+        }
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+        .hero-content h1 .highlight {
+            background: linear-gradient(145deg, #1e4a76, #2563eb);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .hero-title {
+            font-size: 1.1rem;
+            color: #1e4a76;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+        .hero-contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin: 1rem 0 1.2rem;
+            font-size: 0.85rem;
+            color: #334155;
+        }
+        .hero-contact-info i {
+            width: 1.3rem;
+            color: #1e4a76;
+        }
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: #1e4a76;
+            color: white;
+            padding: 0.7rem 1.6rem;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: 0.25s;
+        }
+        .btn-primary:hover {
+            background: #0f2b3d;
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #cbd5e1;
+            color: #1e293b;
+            padding: 0.7rem 1.6rem;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: 0.2s;
+        }
+        .btn-outline:hover {
+            border-color: #1e4a76;
+            color: #1e4a76;
+        }
+        .hero-avatar {
+            flex: 0.7;
+            display: flex;
+            justify-content: center;
+        }
+        .avatar-ring {
+            background: radial-gradient(circle at 30% 20%, #fff, #eef2ff);
+            border-radius: 60% 40% 50% 50%;
+            padding: 0.5rem;
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
+        }
+        .avatar-ring img {
+            width: 240px;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 55% 45% 60% 40%;
+            background: #e2e8f0;
+        }
+
+        /* sections & cards */
+        section {
+            padding: 3rem 0;
+            border-bottom: 1px solid #e9edf2;
+            scroll-margin-top: 80px;
+        }
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.8rem;
+            letter-spacing: -0.01em;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, #1e4a76, #7ab7ef);
+            border-radius: 3px;
+        }
+        .exp-item, .course-item, .training-item {
+            background: white;
+            border-radius: 1.2rem;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ecf3fa;
+            transition: 0.2s;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+        .exp-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 0.3rem;
+        }
+        .exp-date {
+            font-size: 0.75rem;
+            background: #e2e8f0;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-weight: 500;
+        }
+        .exp-company {
+            color: #1e4a76;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-top: 0.5rem;
+        }
+        .badge-light {
+            background: #f1f5f9;
+            padding: 0.4rem 1.1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        .highlight-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1rem 1.2rem;
+            border: 1px solid #ecf3fa;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: 0.2s;
+        }
+        .highlight-card i {
+            font-size: 1.4rem;
+            color: #1e4a76;
+            width: 2rem;
+        }
+        .highlight-card span {
+            font-weight: 500;
+            color: #0f172a;
+        }
+        @media (max-width: 780px) {
+            .nav-links { gap: 0.8rem; justify-content: center; }
+            .nav-links a { font-size: 0.8rem; }
+            .highlights-grid { grid-template-columns: 1fr; }
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #0f172a;
+            color: #cbd5e1;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        .toast-msg {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #1e4a76;
+            color: white;
+            padding: 0.7rem 1.3rem;
+            border-radius: 50px;
+            font-weight: 500;
+            z-index: 999;
+            opacity: 0;
+            transition: 0.25s;
+            pointer-events: none;
+        }
+        @media (max-width: 840px) {
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                background: white;
+                padding: 1rem;
+                border-radius: 1.5rem;
+                margin-top: 1rem;
+                gap: 0.8rem;
+            }
+            .nav-links.show { display: flex; }
+            .menu-toggle { display: block; }
+            .hero-grid { flex-direction: column-reverse; text-align: center; }
+            .hero-contact-info { justify-content: center; }
+            .btn-group { justify-content: center; }
+            .section-title:after { left: 50%; transform: translateX(-50%); width: 70px; }
+            .section-title { display: block; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="container nav-flex">
+        <div class="logo">Alfred<span>.Parks</span></div>
+        <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#employment">Work Experience</a></li>
+            <li><a href="#teachingSection" class="tab-nav-item"><i class="fas fa-chalkboard-user"></i> Teaching</a></li>
+            <li><a href="#coursesSection" class="tab-nav-item"><i class="fas fa-book-open"></i> Courses</a></li>
+            <li><a href="#volunteer">Volunteer</a></li>
+            <li><a href="#highlights">Highlights</a></li>
+            <li><a href="#trainingSection">Training</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</div>
+
+<main>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge"><i class="fas fa-chalkboard-user"></i> IT Educator · Network Architect · 25+ Years</div>
+                <h1>Alfred <span class="highlight">Parks</span></h1>
+                <div class="hero-title">Faculty - Information Technology | Information Systems & Network Specialist</div>
+                <div class="hero-contact-info">
+                    <span><i class="fas fa-map-marker-alt"></i> New Minas, NS</span>
+                    <span><i class="fas fa-phone-alt"></i> (902) 670-9714</span>
+                    <span><i class="fas fa-envelope"></i> alfredparks@hotmail.com</span>
+                </div>
+                <p>Dedicated IT educator with 25+ years of hands-on experience in Databases, coding, network administration, unified communications, and systems engineering. Passionate about mentoring and real‑world technical training.</p>
+                <p>   </p>
+		<p>   </p>
+		<div class="btn-group">
+                    <a href="#employment" class="btn-primary"><i class="fas fa-briefcase"></i> Career journey</a>
+                    <a href="#contact" class="btn-outline"><i class="fas fa-paper-plane"></i> Let's connect</a>
+                </div>
+            </div>
+            <div class="hero-avatar">
+                <div class="avatar-ring">
+                    <img src="profile.png" alt="Alfred Parks" onerror="this.src='https://ui-avatars.com/api/?background=1e4a76&color=fff&bold=true&size=240&name=Alfred+Parks'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== EDUCATION SECTION ========== -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="exp-item"><div class="exp-title">Certificate – Adult Education Foundations</div><div class="exp-company">Nova Scotia Community College, August 2021</div></div>
+            <div class="exp-item"><div class="exp-title">Bachelor of Applied Arts (Information Technology)</div><div class="exp-company">Mount Saint Vincent University, Halifax, NS, June 2019</div></div>
+            <div class="exp-item"><div class="exp-title">Information Technology and Network Administration</div><div class="exp-company">Kingstec Community College, Kentville, NS, May 1997</div></div>
+            <div class="exp-item"><div class="exp-title">Microcomputer Support Technician</div><div class="exp-company">Kingstec Community College, Kentville, NS, June 1994</div></div>
+        </div>
+    </section>
+
+    <!-- ========== WORK EXPERIENCE SECTION ========== -->
+    <section id="employment">
+        <div class="container">
+            <h2 class="section-title">Employment History</h2>
+            <div id="workExperienceList"></div>
+        </div>
+    </section>
+
+    <!-- ========== TEACHING EXPERIENCE SECTION ========== -->
+    <section id="teachingSection">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-chalkboard-user"></i> Teaching Experience</h2>
+            <div id="teachingExperienceList"></div>
+        </div>
+    </section>
+
+    <!-- ========== COURSES TAUGHT SECTION ========== -->
+    <section id="coursesSection">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-book-open"></i> Courses Taught (IT Programs)</h2>
+            <div id="coursesTaughtList"></div>
+        </div>
+    </section>
+
+    <!-- Volunteer Work -->
+    <section id="volunteer">
+        <div class="container">
+            <h2 class="section-title">Volunteer & Community Service</h2>
+            <div id="volunteerList"></div>
+        </div>
+    </section>
+
+    <!-- ========== PROFESSIONAL HIGHLIGHTS SECTION ========== -->
+    <section id="highlights">
+        <div class="container">
+            <h2 class="section-title">Professional Highlights</h2>
+            <div class="highlights-grid">
+                <div class="highlight-card"><i class="fas fa-chalkboard-user"></i> <span>Excellent teaching & mentoring skills</span></div>
+                <div class="highlight-card"><i class="fas fa-brain"></i> <span>Problem-solving & project planning</span></div>
+                <div class="highlight-card"><i class="fas fa-heartbeat"></i> <span>Calm under pressure / stressful events</span></div>
+                <div class="highlight-card"><i class="fas fa-users"></i> <span>Interpersonal, communication & leadership</span></div>
+                <div class="highlight-card"><i class="fas fa-laptop-code"></i> <span>Wide range: programming, network, servers</span></div>
+                <div class="highlight-card"><i class="fas fa-shield-alt"></i> <span>Safety conscious: First Aid, ER planning</span></div>
+                <div class="highlight-card"><i class="fas fa-tasks"></i> <span>Project management & team coordination</span></div>
+                <div class="highlight-card"><i class="fas fa-clock"></i> <span>20+ years of diverse technical experience</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== OTHER TRAINING & DEVELOPMENT (MOVED BELOW HIGHLIGHTS) ========== -->
+    <section id="trainingSection">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-certificate"></i> Other Training & Development</h2>
+            <div id="otherTrainingList"></div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get in touch</h2>
+            <div class="exp-item" style="text-align:center;">
+                <p><i class="fas fa-envelope"></i> alfredparks@hotmail.com &nbsp;|&nbsp; <i class="fas fa-phone"></i> (902) 670-9714</p>
+                <form id="contactForm" style="max-width:500px; margin:1rem auto;">
+                    <input type="text" id="contactName" placeholder="Your name" style="width:100%; margin-bottom:0.8rem; padding:0.7rem 1rem; border-radius:60px; border:1px solid #cbd5e1;">
+                    <input type="email" id="contactEmail" placeholder="Email address" style="width:100%; margin-bottom:0.8rem; padding:0.7rem 1rem; border-radius:60px; border:1px solid #cbd5e1;">
+                    <textarea rows="3" id="contactMsg" placeholder="Message for Alfred..." style="width:100%; margin-bottom:1rem; padding:0.7rem 1rem; border-radius:24px; border:1px solid #cbd5e1;"></textarea>
+                    <button type="submit" class="btn-primary" style="border:none;"><i class="fas fa-paper-plane"></i> Send message</button>
+                </form>
+                <p style="margin-top:1rem; font-size:0.8rem;">References supplied upon request</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="social-links"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-github"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div>
+    <p>© 2025 Alfred Parks — IT Educator, Network Architect, Lifelong Volunteer.</p>
+</footer>
+<div id="toastMsg" class="toast-msg">✓ Ready</div>
+
+<script>
+    // ---------- TEACHING EXPERIENCE ----------
+    const teachingExperienceData = [
+        { title: "Faculty - Information Technology", institution: "Nova Scotia Community College, Annapolis Campus", period: "Aug 2018 – Present", description: "Full-time faculty delivering theoretical and practical instruction in IT programs. Curriculum design, hands-on labs, student mentorship, and real-world project guidance." },
+        { title: "Part-time Instructor (Night Courses)", institution: "Kingstec Community College (Extension Services), Kentville, NS", period: "June 1997 – Sept 2001", description: "Taught troubleshooting personal computers, basic networking, and A+ certification prep to adult learners." }
+    ];
+
+    // ---------- COURSES TAUGHT ----------
+    const coursesTaughtData = [
+        "Introduction to Networking (Cisco CCNA)",
+        "Network Security Fundamentals",
+        "Windows Server Administration",
+        "Linux/Unix System Administration",
+        "Unified Communications & VoIP (Avaya/3CX)",
+        "IT Project Management",
+        "Computer Hardware & Troubleshooting (A+ prep)",
+        "Virtualization (VMware/Hyper-V)",
+        "Cloud Computing Essentials",
+        "Cybersecurity Awareness & Best Practices"
+    ];
+
+    // ---------- OTHER TRAINING (full list from resume) ----------
+    const otherTrainingData = [
+        { name: "Instructional Skills Workshop (ISW)", issuer: "CNAQ / NSCC" },
+        { name: "Safety Officer Course", issuer: "NSGSAR" },
+        { name: "Student Drug and Alcohol Abuse (Safe Colleges)", issuer: "Safe Colleges" },
+        { name: "Active Shooter Response Training", issuer: "Safe Colleges" },
+        { name: "Cognitive Behavior Therapy (CBT)", issuer: "Professional Development" },
+        { name: "Supporting Survivors of Sexual Violence", issuer: "Nova Scotia Community Services" },
+        { name: "Non-Violent Crisis Techniques", issuer: "NSCC" },
+        { name: "Internal Accident Investigations (CASS)", issuer: "CASS" },
+        { name: "Cisco Security & Voice over IP Series", issuer: "Cisco" },
+        { name: "Project Management (Garner Group)", issuer: "Garner Group" },
+        { name: "Practical Loss Control Leadership / Due Diligence", issuer: "Various" },
+        { name: "Fall Protection, Confined Space, Advanced First Aid", issuer: "Workplace Safety" },
+        { name: "Ruckus Wireless Certification", issuer: "Ruckus" },
+        { name: "Avaya Implementation Professional - Phones (AIPS)", issuer: "Avaya" },
+        { name: "SIP School Certified Associate (SSCA)", issuer: "SIP School" },
+        { name: "3CX Phone System Certification", issuer: "3CX" },
+        { name: "Certified Security Protection Professional (ASIS)", issuer: "ASIS" },
+        { name: "Novell Certified Network Engineer (CNE)", issuer: "Novell" },
+        { name: "Microsoft Certified Professional", issuer: "Microsoft" },
+        { name: "Nova Scotia Communication Cabling Specialist", issuer: "NSCC" },
+        { name: "A+ Service Technician Certification", issuer: "CompTIA" }
+    ];
+
+    // Employment history - full detailed list
+    const workHistory = [
+        { role: "Faculty - Information Technology", company: "Nova Scotia Community College, Annapolis Campus", period: "Aug 2018 – Present", desc: "Provide theoretical and practical instruction in the Information Technology Programs." },
+        { role: "Systems Administrator / Technician", company: "Noggins Corner Farm Limited, Greenwich, NS", period: "Aug 2016 – Feb 2018", desc: "Maintain/design network and server infrastructure for the new building." },
+        { role: "Integrator Unified Communications", company: "CABCO Communications Group, Dartmouth, NS", period: "Aug 2011 – July 2016", desc: "Design, install, and maintain phone systems, network equipment, and servers." },
+        { role: "Network / Telecommunications Administrator", company: "College of North Atlantic-Qatar, Doha, Qatar", period: "Nov 2005 – Aug 2010", desc: "Maintain, upgrade, and administer the phone system and other network equipment." },
+        { role: "System Analyst / Technician / Consultant", company: "NorthSide Communications, Centreville, NS", period: "July 2004 – Nov 2005", desc: "Maintain and install a variety of computer, server, and network equipment." },
+        { role: "Network Administrator / Systems Engineer", company: "ACA Co-op / Eastern Protein Foods Ltd., Kentville, NS", period: "June 1997 – July 2004", desc: "Install, maintain, and administer a mixed UNIX, Linux, Novell, and Microsoft server network and all network equipment." },
+        { role: "Instructor, part-time", company: "Kingstec Community College (Extension Services), Kentville, NS", period: "June 1997 – Sept 2001", desc: "Teach night courses on troubleshooting personal computers." }
+    ];
+
+    const volunteerEntries = [
+        "25+ years Civil Air Search and Rescue (Spotter, Navigator, Search Coordinator) • Zone Commander for Halifax Zone",
+        "43 years Valley Search and Rescue (All Positions) • Communications Lead & command team",
+        "Past Search Director for Kings County (6 Years) • Past Asst-Search Director (8 Years) • Past Secretary and VP",
+        "15 years Halls Harbour Fire Department • Past Captain Rescue Unit and Training Officer",
+        "Canadian Red Cross • Past Communication Coordinator for Western Zone of Nova Scotia"
+    ];
+
+    function renderTeachingExp() {
+        const container = document.getElementById("teachingExperienceList");
+        if (!container) return;
+        container.innerHTML = "";
+        teachingExperienceData.forEach(exp => {
+            const div = document.createElement("div");
+            div.className = "exp-item";
+            div.innerHTML = `
+                <div class="exp-title"><span>${exp.title}</span><span class="exp-date">${exp.period}</span></div>
+                <div class="exp-company">${exp.institution}</div>
+                <p style="color:#334155;">${exp.description}</p>
+            `;
+            container.appendChild(div);
+        });
+    }
+
+    function renderCoursesTaught() {
+        const container = document.getElementById("coursesTaughtList");
+        if (!container) return;
+        container.innerHTML = `<div class="skills-grid">${coursesTaughtData.map(c => `<span class="badge-light"><i class="fas fa-code"></i> ${c}</span>`).join('')}</div>`;
+    }
+
+    function renderOtherTraining() {
+        const container = document.getElementById("otherTrainingList");
+        if (!container) return;
+        container.innerHTML = "";
+        otherTrainingData.forEach(training => {
+            const div = document.createElement("div");
+            div.className = "training-item exp-item";
+            div.innerHTML = `<i class="fas fa-certificate" style="color:#1e4a76; margin-right:12px;"></i> <strong>${training.name}</strong> — ${training.issuer}`;
+            container.appendChild(div);
+        });
+    }
+
+    function renderWork() {
+        const container = document.getElementById("workExperienceList");
+        if (container) {
+            container.innerHTML = "";
+            workHistory.forEach(job => {
+                const div = document.createElement("div");
+                div.className = "exp-item";
+                div.innerHTML = `<div class="exp-title"><span>${job.role}</span><span class="exp-date">${job.period}</span></div><div class="exp-company">${job.company}</div><p>${job.desc}</p>`;
+                container.appendChild(div);
+            });
+        }
+    }
+
+    function renderVolunteer() {
+        const container = document.getElementById("volunteerList");
+        if (container) {
+            container.innerHTML = "";
+            volunteerEntries.forEach(item => {
+                const div = document.createElement("div");
+                div.className = "exp-item";
+                div.innerHTML = `<i class="fas fa-hand-holding-heart" style="margin-right:12px; color:#1e4a76;"></i> ${item}`;
+                container.appendChild(div);
+            });
+        }
+    }
+
+    function initSmoothScrollAndNav() {
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId && targetId !== '#') {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        const mobileMenu = document.getElementById('navLinks');
+                        if (mobileMenu && window.innerWidth <= 840) {
+                            mobileMenu.classList.remove('show');
+                        }
+                    }
+                }
+            });
+        });
+    }
+
+    let toastTimer = null;
+    function showToast(msg) {
+        const toast = document.getElementById("toastMsg");
+        if (!toast) return;
+        if (toastTimer) clearTimeout(toastTimer);
+        toast.innerText = msg;
+        toast.style.opacity = "1";
+        toastTimer = setTimeout(() => toast.style.opacity = "0", 2800);
+    }
+    function handleContact(e) {
+        e.preventDefault();
+        const name = document.getElementById("contactName")?.value.trim() || "friend";
+        const email = document.getElementById("contactEmail")?.value.trim();
+        const msg = document.getElementById("contactMsg")?.value.trim();
+        if (!email || !msg) { showToast("Please fill email and message."); return; }
+        if (!email.includes("@")) { showToast("Valid email required."); return; }
+        showToast(`Thanks ${name}, Alfred will reply soon.`);
+        document.getElementById("contactForm").reset();
+    }
+
+    function initMobileMenu() {
+        const toggle = document.getElementById("menuToggle");
+        const nav = document.getElementById("navLinks");
+        if (toggle && nav) {
+            toggle.addEventListener("click", () => nav.classList.toggle("show"));
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        renderTeachingExp();
+        renderCoursesTaught();
+        renderOtherTraining();
+        renderWork();
+        renderVolunteer();
+        initSmoothScrollAndNav();
+        initMobileMenu();
+        const form = document.getElementById("contactForm");
+        if (form) form.addEventListener("submit", handleContact);
+        console.log("Portfolio ready: Other Training & Development moved below Professional Highlights.");
+    });
+</script>
+</body>
+</html>
