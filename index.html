@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Alfred Parks · IT Educator & Systems Architect</title>
+    <!-- Google Fonts + modern reset -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+            color: #0a0f1c;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e4a76;
+            border-radius: 12px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* navbar - minimal, only home link */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(30, 74, 118, 0.15);
+            z-index: 100;
+            padding: 0.8rem 0;
+        }
+        .nav-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-weight: 800;
+            font-size: 1.7rem;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #0f2b3d, #1e4a76);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .logo span {
+            background: linear-gradient(135deg, #1e4a76, #3b82f6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        
+        /* Main Navigation Links - only home */
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #1e293b;
+            transition: 0.2s;
+            font-size: 0.95rem;
+            padding: 0.4rem 0;
+        }
+        .nav-links a:hover {
+            color: #1e4a76;
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: #0f172a;
+        }
+
+        /* hero section - full page, centered, elegant */
+        .hero {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+        }
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 3rem;
+            justify-content: space-between;
+        }
+        .hero-content {
+            flex: 1;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: #e0f2fe;
+            color: #0369a1;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            margin-bottom: 1.2rem;
+        }
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+        .hero-content h1 .highlight {
+            background: linear-gradient(145deg, #1e4a76, #2563eb);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .hero-title {
+            font-size: 1.2rem;
+            color: #1e4a76;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .hero-contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1rem 0 1.2rem;
+            font-size: 0.9rem;
+            color: #334155;
+        }
+        .hero-contact-info i {
+            width: 1.4rem;
+            color: #1e4a76;
+        }
+        .hero-content p {
+            font-size: 1rem;
+            color: #334155;
+            max-width: 550px;
+            margin-bottom: 2rem;
+        }
+        .hero-avatar {
+            flex: 0.7;
+            display: flex;
+            justify-content: center;
+        }
+        .avatar-ring {
+            background: radial-gradient(circle at 30% 20%, #fff, #eef2ff);
+            border-radius: 60% 40% 50% 50%;
+            padding: 0.5rem;
+            box-shadow: 0 25px 35px -12px rgba(0,0,0,0.15);
+        }
+        .avatar-ring img {
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 55% 45% 60% 40%;
+            background: #e2e8f0;
+            transition: transform 0.3s ease;
+        }
+        .avatar-ring img:hover {
+            transform: scale(1.02);
+        }
+
+        /* subtle floating animation for avatar */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0px); }
+        }
+        .avatar-ring {
+            animation: float 5s ease-in-out infinite;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #0f172a;
+            color: #cbd5e1;
+            margin-top: 2rem;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        .social-links a {
+            color: #94a3b8;
+            font-size: 1.2rem;
+            transition: 0.2s;
+        }
+        .social-links a:hover {
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* responsive adjustments */
+        @media (max-width: 840px) {
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                background: white;
+                padding: 1rem;
+                border-radius: 1.5rem;
+                margin-top: 1rem;
+                gap: 0.8rem;
+                text-align: center;
+            }
+            .nav-links.show { display: flex; }
+            .menu-toggle { display: block; }
+            .hero {
+                min-height: auto;
+                padding: 3rem 0;
+            }
+            .hero-grid {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .hero-contact-info {
+                justify-content: center;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .avatar-ring img {
+                width: 220px;
+                height: 220px;
+            }
+            .hero-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-badge {
+                display: inline-block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="container nav-flex">
+        <div class="logo">Alfred<span>.Parks</span></div>
+        <div class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <!-- Only Home remains — clean and minimal -->
+        </ul>
+    </div>
+</div>
+
+<main>
+    <!-- Hero Section - Pure intro / home page, updated experience to 25+ years -->
+    <section id="home" class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge"><i class="fas fa-chalkboard-user"></i> IT Educator · Network Architect · 25+ Years</div>
+                <h1>Alfred <span class="highlight">Parks</span></h1>
+                <div class="hero-title">Faculty - Information Technology | Systems & Network Specialist</div>
+                <div class="hero-contact-info">
+                    <!-- Location: Nova Scotia, Canada -->
+                    <span><i class="fas fa-map-marker-alt"></i> Nova Scotia, Canada</span>
+                    <!-- Phone number removed as requested -->
+                    <span><i class="fas fa-envelope"></i> alfredparks@hotmail.com</span>
+                </div>
+                <p>Dedicated IT educator with 25+ years of hands-on experience in network administration, unified communications, and systems engineering. Passionate about mentoring and real‑world technical training. I believe in building resilient infrastructure and empowering the next generation of IT professionals.</p>
+                <!-- No buttons, no contact form, no resume download — just the professional introduction -->
+            </div>
+            <div class="hero-avatar">
+                <div class="avatar-ring">
+                    <!-- Photo placeholder: rename your image to "alfred-parks.jpg" and place in same folder -->
+                    <img src="alfred-parks.jpg" alt="Alfred Parks" onerror="this.src='https://ui-avatars.com/api/?background=1e4a76&color=fff&bold=true&size=280&name=Alfred+Parks'">
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="social-links">
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+    <p>© 2025 Alfred Parks — IT Educator, Network Architect, Lifelong Volunteer.</p>
+    <p style="font-size: 0.75rem; margin-top: 0.5rem; opacity: 0.7;">Based in Nova Scotia, available for consultations and speaking engagements.</p>
+</footer>
+
+<script>
+    // Mobile menu toggle functionality (minimal, but keeps navbar consistent)
+    function initMobileMenu() {
+        const toggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+        if (toggle && navLinks) {
+            toggle.addEventListener("click", () => {
+                navLinks.classList.toggle("show");
+            });
+            // Close mobile menu after clicking a link
+            document.querySelectorAll(".nav-links a").forEach(link => {
+                link.addEventListener("click", () => {
+                    navLinks.classList.remove("show");
+                });
+            });
+        }
+    }
+
+    // Smooth scroll for any anchor links (just in case)
+    function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener("click", function(e) {
+                const targetId = this.getAttribute("href");
+                if (targetId === "#" || !targetId) return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+            });
+        });
+    }
+
+    // Update footer year dynamically
+    function updateFooterYear() {
+        const footerParagraph = document.querySelector("footer p");
+        if (footerParagraph) {
+            const currentYear = new Date().getFullYear();
+            if (footerParagraph.innerHTML.includes("2025")) {
+                footerParagraph.innerHTML = footerParagraph.innerHTML.replace("2025", currentYear);
+            }
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        initMobileMenu();
+        initSmoothScroll();
+        updateFooterYear();
+        console.log("Alfred Parks portfolio — clean intro page. Experience updated to 25+ years. Location: Nova Scotia, Canada.");
+    });
+</script>
+</body>
+</html>
